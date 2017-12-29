@@ -1,0 +1,22 @@
+<% include ./partials/header %>
+<div class="container">
+<h1>Week <%=picks[0].game.weekNo %> Games</h1>
+    <form action="/picks" method="POST">
+        <% picks.forEach((pick) => { %>
+            <div class="form-check">
+                <label class="custom-control custom-radio">
+                    <input id="away" name=<%= pick._id %> value="away" type="radio" class="custom-control-input">
+                    <span class="custom-control-indicator"></span>
+                    <span class="custom-control-description"><%= pick.game.awayTeam.name %></span>
+                </label>
+                <label class="custom-control custom-radio">
+                    <input id="home" name=<%= pick._id %> value="home" type="radio" class="custom-control-input">
+                    <span class="custom-control-indicator"></span>
+                    <span class="custom-control-description"><%= pick.game.homeTeam.name %></span>
+                </label>
+            </div>
+        <% }); %>
+        <input type="submit">
+    </form>
+</div>
+<% include ./partials/footer %>
